@@ -1,3 +1,16 @@
+def printText():
+    fill(0,0,0)
+    textSize(32)
+    text("Warrior",100,330)
+    text("Wizard",353,330)
+    text("Rogue",606,330)
+    text("Ranger",859,330)
+    text("Paladin",100,650)
+    text("Monk",358,650)
+    text("Warlock",606,650)
+    text("Saint",864,650)
+    text("Confirm",1185,620)
+
 def setup():
     size(1500, 800)
     fill(255)
@@ -11,9 +24,7 @@ def setup():
     rect(799,360,233,300)
     fill(150)
     rect(1150,560,200,100)
-    fill(0,0,0)
-    textSize(32)
-    text("Confirm",1185,620)
+    printText()
 
 players = 0
 war = False
@@ -33,6 +44,8 @@ def onClick():
         if mousePressed == False:
             return True
     return False
+    
+
     
 def mousePressed():
     global players
@@ -118,14 +131,12 @@ def mousePressed():
     rect(799,360,233,300)
     if players < 2:
         fill(150)
-    elif mousePressed and mouseX > 1150 and mouseY > 560 and mouseX < 1350 and mouseY < 660 and players > 2:
+    elif mousePressed and mouseX > 1150 and mouseY > 560 and mouseX < 1350 and mouseY < 660 and players >= 2:
         fill(230)
     else:
         fill(255)
     rect(1150,560,200,100)
-    fill(0,0,0)
-    textSize(32)
-    text("Confirm",1185,620)
+    printText()
 
 def draw():
     global players
