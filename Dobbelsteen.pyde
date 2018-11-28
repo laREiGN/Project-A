@@ -63,7 +63,6 @@ def mousePressed():
     
     if 25 < mouseX < 75 and 25 < mouseY < 75:
         number = randint(1,4)
-        print(number)
         #rolling = True
         #rolling_frame = rolling_max_frame
 
