@@ -2,7 +2,7 @@ turn_count = 0
 global_turn_count = 0
 players = 4
 
-# players moet dan gelinkt worden aan de character selectie om door aan deze variabele de juiste waarde te geven
+# players moet dan gelinkt worden aan de character selectie om aan deze variabele de juiste waarde te geven
 
 def setup():
     size(250,250)
