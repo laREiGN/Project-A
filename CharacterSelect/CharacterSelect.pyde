@@ -25,6 +25,7 @@ def setup():
     fill(150)
     rect(1150,560,200,100)
     printText()
+    
 
 players = 0
 war = False
@@ -35,6 +36,7 @@ pal = False
 mon = False
 warl = False
 sai = False
+charList = []
 
 #a function that returns true after something is clicked
 def onClick():
@@ -57,73 +59,81 @@ def mousePressed():
     global mon
     global warl
     global sai
-    if mousePressed and mouseX > 40 and mouseY > 40 and mouseX < 270 and mouseY < 340 and war == False:
+    if mousePressed and 40 < mouseX < 270 and 40 < mouseY < 340 and war == False:
         fill(150)
         players +=1
         war = True
+        charList.append(("Warrior",25,5,2,2,1))
     elif war == True:
         fill(150)
     else:
         fill(255)
     rect(40,40,233,300)
-    if mousePressed and mouseX > 293 and mouseY > 40 and mouseX < 526 and mouseY < 340 and wiz == False:
+    if mousePressed and 293 < mouseX < 526 and 40 < mouseY < 340 and wiz == False:
         fill(150)
         players +=1
         wiz = True
+        charList.append(("Wizard", 10,2,3,3,5))
     elif wiz == True:
         fill(150)
     else:
         fill(255)
     rect(293,40,233,300)
-    if mousePressed and mouseX > 546 and mouseY > 40 and mouseX < 779 and mouseY < 340 and rog == False:
+    if mousePressed and 546 < mouseX < 779 and 40 < mouseY < 340 and rog == False:
         fill(150)
         players +=1
         rog = True
+        charList.append(("Rogue", 15,2,3,5,2))
     elif rog == True:
         fill(150)
     else:
         fill(255)
     rect(546,40,233,300)
-    if mousePressed and mouseX > 799 and mouseY > 40 and mouseX < 1032 and mouseY < 340 and ran == False:
+    if mousePressed and 799 < mouseX < 1032 and 40 < mouseY < 340 and ran == False:
         fill(150)
         players +=1
         ran = True
+        charList.append(("Ranger", 15,1,5,4,2))
     elif ran == True:
         fill(150)
     else:
         fill(255)
     rect(799,40,233,300)
-    if mousePressed and mouseX > 40 and mouseY > 360 and mouseX < 270 and mouseY < 660 and pal == False:
+    if mousePressed and 40 < mouseX < 270 and 360 < mouseY < 660 and pal == False:
         fill(150)
         players +=1
         pal = True
+        charList.append(("Paladin", 20,4,1,2,4))
     elif pal == True:
         fill(150)
     else:
         fill(255)
     rect(40,360,233,300)
-    if mousePressed and mouseX > 293 and mouseY > 360 and mouseX < 526 and mouseY < 660 and mon == False:
+    if mousePressed and 293 < mouseX < 526 and 360 < mouseY < 660 and mon == False:
         fill(150)
         players +=1
         mon = True
+        charList.append(("Monk", 15,2,4,4,2))
     elif mon == True:
         fill(150)
     else:
         fill(255)
     rect(293,360,233,300)
-    if mousePressed and mouseX > 546 and mouseY > 360 and mouseX < 779 and mouseY < 660 and warl == False:
+    if mousePressed and 546 < mouseX < 779 and 360 < mouseY < 660 and warl == False:
         fill(150)
         players +=1
         warl = True
+        charList.append(("Warlock", 15,2,2,3,5))
     elif warl == True:
         fill(150)
     else:
         fill(255)
     rect(546,360,233,300)
-    if mousePressed and mouseX > 799 and mouseY > 360 and mouseX < 1032 and mouseY < 660 and sai == False:
+    if mousePressed and 799 < mouseX < 1032 and 360 < mouseY < 660 and sai == False:
         fill(150)
         players +=1
         sai = True
+        charList.append(("Saint", 15,1,3,3,5))
     elif sai == True:
         fill(150)
     else:
@@ -131,8 +141,10 @@ def mousePressed():
     rect(799,360,233,300)
     if players < 2:
         fill(150)
-    elif mousePressed and mouseX > 1150 and mouseY > 560 and mouseX < 1350 and mouseY < 660 and players >= 2:
+    elif mousePressed and 1150 < mouseX < 1350 and 560 < mouseY < 660 and players >= 2:
         fill(230)
+        print("Amount of players: " + str(players))
+        print("Characters chosen: " + str(charList))
     else:
         fill(255)
     rect(1150,560,200,100)
@@ -141,7 +153,7 @@ def mousePressed():
 def draw():
     global players
     
-    print(players)
+    
     
     
     
