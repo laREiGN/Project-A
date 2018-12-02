@@ -38,16 +38,6 @@ warl = False
 sai = False
 charList = []
 
-#a function that returns true after something is clicked
-def onClick():
-    if mousePressed:
-        held = True
-    if held==True:
-        if mousePressed == False:
-            return True
-    return False
-    
-
     
 def mousePressed():
     global players
