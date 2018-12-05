@@ -7,7 +7,7 @@ bstr = 0
 bdex = 0
 bint = 0
     
-    
+'''Sets the base stat comparing values to the base stats of the character in x'''    
 def setBases(x):
     global currChar
     global bagi
@@ -23,6 +23,7 @@ def setBases(x):
 points = 2
 finalChars = []
 
+'''Draws all non-changing text in the program'''
 def drawText():
     textSize(32)
     fill(0)
@@ -37,6 +38,7 @@ def drawText():
     textSize(72)
     text("Confirm", 485, 575)
 
+'''Draws all changing text in the program, using character x'''
 def drawCharacter(x):
     global currChar
     background(255)
@@ -51,7 +53,7 @@ def drawCharacter(x):
     text("Dexterity: " + str(currChar[3]), 400, 400)
     text("Stat points left to assign: " + str(points), 400, 450)
     
-
+'''Draws all buttons'''
 def drawButtons(x):
     if((currChar[4]) != (charList[x][4])):
         fill(255)
@@ -125,36 +127,28 @@ def mousePressed():
     if mousePressed and 700 < mouseX < 775 and 222 < mouseY < 254 and agi != bagi:
         agi -= 1
         points +=1
-        currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 800 < mouseX < 875 and 222 < mouseY < 254 and agi != 5 and points > 0:
         agi += 1
         points -=1
-        currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 700 < mouseX < 775 and 272 < mouseY < 304 and intl != bint:
         intl -= 1
         points +=1
-        currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 800 < mouseX < 875 and 272 < mouseY < 304 and intl != 5 and points > 0:
         intl += 1
         points -=1
-        currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 700 < mouseX < 775 and 322 < mouseY < 354 and strength != bstr:
         strength -= 1
         points +=1
-        currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 800 < mouseX < 875 and 322 < mouseY < 354 and strength !=5 and points > 0:
         strength += 1
         points -=1
-        currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 700 < mouseX < 775 and 372 < mouseY < 404 and dex != bdex:
         dex -= 1
         points +=1
-        currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 800 < mouseX < 875 and 372 < mouseY < 404 and dex != 5 and points > 0:
         dex += 1
         points -=1
-        currChar = (classname,HP,strength,dex,agi,intl)
-    
+    currChar = (classname,HP,strength,dex,agi,intl)
     if mousePressed and 400 < mouseX < 875 and 500 < mouseY < 600 and points == 0:
         finalChars.append(currChar)
         if x < len(charList) - 1:

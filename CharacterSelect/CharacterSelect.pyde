@@ -1,3 +1,5 @@
+
+'''Prints all text that appears in this window'''
 def printText():
     fill(0,0,0)
     textSize(32)
