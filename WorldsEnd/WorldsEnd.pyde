@@ -41,10 +41,11 @@ def setup():
     printText()
     
 def setup2():
+    global charInList
     size(1500, 800)
     fill(255)
     background(255)
-    setBases(x)
+    setBases(charInList)
     
 state = 1
 players = 0
@@ -57,7 +58,7 @@ mon = False
 warl = False
 sai = False
 charList = []
-x = 0
+charInList = 0
 currChar = []
 bagi = 0
 bstr = 0
@@ -80,8 +81,6 @@ def drawText():
     text("+",825,398)
     textSize(72)
     text("Confirm", 485, 575)
-    textSize(32)
-    text("Back", 50, 575)
 
 '''Draws all changing text in the program, using character x'''
 def drawCharacter(x):
@@ -266,7 +265,7 @@ def mousePressed():
         global currChar
         global points
         global finalChars
-        global x
+        global charInList
         classname = currChar[0]
         HP = currChar[1]
         strength = currChar[2]
@@ -300,9 +299,9 @@ def mousePressed():
         currChar = (classname,HP,strength,dex,agi,intl)
         if mousePressed and 400 < mouseX < 875 and 500 < mouseY < 600 and points == 0:
             finalChars.append(currChar)
-            if x < len(charList) - 1:
-                x += 1
-                setBases(x)
+            if charInList < len(charList) - 1:
+                charInList += 1
+                setBases(charInList)
                 points = 2
             else:
                 print(finalChars)
@@ -312,9 +311,9 @@ def draw():
     if state == 1:
         global players
     elif state == 2:
-        global x
-        drawCharacter(x)
-        drawButtons(x)
+        global charInList
+        drawCharacter(charInList)
+        drawButtons(charInList)
     
     
     
