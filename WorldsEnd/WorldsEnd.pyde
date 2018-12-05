@@ -26,6 +26,7 @@ def setBases(x):
     bint = charList[x][5]
 
 def setup():
+    background(139,0,0)
     size(1500, 800)
     fill(255)
     rect(40,40,233,300)
@@ -44,7 +45,7 @@ def setup2():
     global charInList
     size(1500, 800)
     fill(255)
-    background(255)
+    background(139,0,0)
     setBases(charInList)
     
 state = 1
@@ -85,7 +86,7 @@ def drawText():
 '''Draws all changing text in the program, using character x'''
 def drawCharacter(x):
     global currChar
-    background(255)
+    background(139,0,0)
     fill(0)
     textSize(72)
     text(charList[x][0],50,100)
@@ -255,7 +256,7 @@ def mousePressed():
         elif mousePressed and 1150 < mouseX < 1350 and 560 < mouseY < 660 and players >= 2:
             fill(230)
             state +=1
-            background(180)
+            background(139,0,0)
             setup2()
         else:
             fill(255)
@@ -305,6 +306,7 @@ def mousePressed():
                 points = 2
             else:
                 print(finalChars)
+                state += 1
 
 def draw():
     global state
@@ -314,6 +316,8 @@ def draw():
         global charInList
         drawCharacter(charInList)
         drawButtons(charInList)
+    elif state == 3:
+        background(139,0,0)
     
     
     
