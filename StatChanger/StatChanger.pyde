@@ -37,6 +37,8 @@ def drawText():
     text("+",825,398)
     textSize(72)
     text("Confirm", 485, 575)
+    textSize(32)
+    text("Back", 50, 575)
 
 '''Draws all changing text in the program, using character x'''
 def drawCharacter(x):
@@ -103,8 +105,8 @@ def drawButtons(x):
         rect(800, 372, 75, 32)
     else:
         fill(180)
-        rect(800, 372, 75, 32)
-        
+        rect(800, 372, 75, 32)    
+    
     if(points == 0):
         fill(255)
         rect(400, 500, 475, 100)
