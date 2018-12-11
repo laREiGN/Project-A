@@ -1,3 +1,23 @@
+state = 0
+players = 0
+war = False
+wiz = False
+rog = False
+ran = False
+pal = False
+mon = False
+warl = False
+sai = False
+charList = []
+charInList = 0
+currChar = []
+bagi = 0
+bstr = 0
+bdex = 0
+bint = 0
+points = 2
+finalChars = []
+
 
 '''Prints all text that appears in this window'''
 def printText():
@@ -24,8 +44,23 @@ def setBases(x):
     bstr = charList[x][2]
     bdex = charList[x][3]
     bint = charList[x][5]
-
+    
 def setup():
+    background(139,0,0)
+    size(1500, 800)
+    fill(218,165,32)
+    rect(350,250,800,150)
+    rect(350,425,800,150)
+    rect(350,600,800,150)
+    textSize(200)
+    text("World's End", 175, 200)
+    fill(0)
+    textSize(72)
+    text("Start Game", 550, 350)
+    text("Text Adventure", 475, 525)
+    text("Exit Game", 575, 700)
+
+def setup2():
     background(139,0,0)
     size(1500, 800)
     fill(255)
@@ -41,32 +76,12 @@ def setup():
     rect(1150,560,200,100)
     printText()
     
-def setup2():
+def setup3():
     global charInList
     size(1500, 800)
     fill(255)
     background(139,0,0)
     setBases(charInList)
-    
-state = 1
-players = 0
-war = False
-wiz = False
-rog = False
-ran = False
-pal = False
-mon = False
-warl = False
-sai = False
-charList = []
-charInList = 0
-currChar = []
-bagi = 0
-bstr = 0
-bdex = 0
-bint = 0
-points = 2
-finalChars = []
 
 '''Draws all non-changing text in the program'''
 def drawText():
@@ -160,6 +175,17 @@ def drawButtons(x):
     
 def mousePressed():
     global state
+    if state == 0:
+        if mousePressed and 350 < mouseX < 1150 and 250 < mouseY < 400:
+            fill(230)
+            state +=1
+            background(139,0,0)
+            setup2()
+        if mousePressed and 350 < mouseX < 1150 and 425 < mouseY < 575:
+            textSize(24)
+            text("Coming soon!", 100, 525)
+        if mousePressed and 350 < mouseX < 1150 and 600 < mouseY < 750:
+            exit()
     if state == 1:
         global players
         global war
@@ -257,7 +283,7 @@ def mousePressed():
             fill(230)
             state +=1
             background(139,0,0)
-            setup2()
+            setup3()
         else:
             fill(255)
         rect(1150,560,200,100)
@@ -310,6 +336,8 @@ def mousePressed():
 
 def draw():
     global state
+    if state == 0:
+        return 0
     if state == 1:
         global players
     elif state == 2:
