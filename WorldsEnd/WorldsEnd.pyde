@@ -18,6 +18,8 @@ bint = 0
 points = 2
 finalChars = []
 
+import time
+
 
 '''Prints all text that appears in this window'''
 def printText():
@@ -82,6 +84,16 @@ def setup3():
     fill(255)
     background(139,0,0)
     setBases(charInList)
+    
+def setup50():
+    size(1500,800)
+    fill(218,165,32)
+    rect(1150,560,200,100)
+    fill(0)
+    textSize(32)
+    text("Continue",1180,620)
+    letter = loadImage("letter.png")
+    image(letter, 200,0,600,800)
 
 '''Draws all non-changing text in the program'''
 def drawText():
@@ -178,9 +190,9 @@ def mousePressed():
     if state == 0:
         if mousePressed and 350 < mouseX < 1150 and 250 < mouseY < 400:
             fill(230)
-            state +=1
             background(139,0,0)
-            setup2()
+            state = 50
+            setup50()
         if mousePressed and 350 < mouseX < 1150 and 425 < mouseY < 575:
             textSize(24)
             text("Coming soon!", 100, 525)
@@ -333,6 +345,12 @@ def mousePressed():
             else:
                 print(finalChars)
                 state += 1
+    if state == 50:
+        if mousePressed and 1150 < mouseX < 1350 and 560 < mouseY < 660:
+            fill(255)
+            state = 1
+            background(139,0,0)
+            setup2()
 
 def draw():
     global state
@@ -346,6 +364,8 @@ def draw():
         drawButtons(charInList)
     elif state == 3:
         background(139,0,0)
+    elif state == 50:
+        return 0
     
     
     
