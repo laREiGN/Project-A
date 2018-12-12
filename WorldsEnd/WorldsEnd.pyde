@@ -21,7 +21,7 @@ finalChars = []
 import time
 
 
-'''Prints all text that appears in this window'''
+'''Prints all text that appears in this window for the character selecter'''
 def printText():
     fill(0,0,0)
     textSize(32)
@@ -35,6 +35,7 @@ def printText():
     text("Saint",864,650)
     text("Confirm",1185,620)
     
+'''Sets the base stats for the current character in the stat changer'''
 def setBases(x):
     global currChar
     global bagi
@@ -47,6 +48,7 @@ def setBases(x):
     bdex = charList[x][3]
     bint = charList[x][5]
     
+'''Sets up the title screen/main menu'''
 def setup():
     background(139,0,0)
     size(1500, 800)
@@ -62,6 +64,8 @@ def setup():
     text("Text Adventure", 475, 525)
     text("Exit Game", 575, 700)
 
+
+'''Sets up the character selecter'''
 def setup2():
     background(139,0,0)
     size(1500, 800)
@@ -78,6 +82,7 @@ def setup2():
     rect(1150,560,200,100)
     printText()
     
+'''Sets up the stat distributor'''
 def setup3():
     global charInList
     size(1500, 800)
@@ -85,6 +90,7 @@ def setup3():
     background(139,0,0)
     setBases(charInList)
     
+'''Sets up the letter screen'''
 def setup50():
     size(1500,800)
     fill(218,165,32)
@@ -95,7 +101,7 @@ def setup50():
     letter = loadImage("letter.png")
     image(letter, 200,0,600,800)
 
-'''Draws all non-changing text in the program'''
+'''Draws all non-changing text in the program in the stat distributor'''
 def drawText():
     textSize(32)
     fill(0)
@@ -110,7 +116,7 @@ def drawText():
     textSize(72)
     text("Confirm", 485, 575)
 
-'''Draws all changing text in the program, using character x'''
+'''Draws all changing text in the program, using character x. Stat distributor'''
 def drawCharacter(x):
     global currChar
     background(139,0,0)
@@ -125,7 +131,7 @@ def drawCharacter(x):
     text("Dexterity: " + str(currChar[3]), 400, 400)
     text("Stat points left to assign: " + str(points), 400, 450)
     
-'''Draws all buttons'''
+'''Draws all buttons for the stat distributor'''
 def drawButtons(x):
     if((currChar[4]) != (charList[x][4])):
         fill(255)
@@ -187,7 +193,7 @@ def drawButtons(x):
     
 def mousePressed():
     global state
-    if state == 0:
+    if state == 0:  #title screen
         if mousePressed and 350 < mouseX < 1150 and 250 < mouseY < 400:
             fill(230)
             background(139,0,0)
@@ -198,7 +204,7 @@ def mousePressed():
             text("Coming soon!", 100, 525)
         if mousePressed and 350 < mouseX < 1150 and 600 < mouseY < 750:
             exit()
-    if state == 1:
+    if state == 1:  #character selection
         global players
         global war
         global wiz
@@ -300,7 +306,7 @@ def mousePressed():
             fill(255)
         rect(1150,560,200,100)
         printText()
-    elif state == 2:
+    elif state == 2:  #stat distributor
         global currChar
         global points
         global finalChars
@@ -345,7 +351,7 @@ def mousePressed():
             else:
                 print(finalChars)
                 state += 1
-    if state == 50:
+    if state == 50:  #letter screen
         if mousePressed and 1150 < mouseX < 1350 and 560 < mouseY < 660:
             fill(255)
             state = 1
