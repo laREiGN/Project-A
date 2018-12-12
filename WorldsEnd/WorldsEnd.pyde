@@ -18,21 +18,35 @@ bint = 0
 points = 2
 finalChars = []
 
-import time
-
 
 '''Prints all text that appears in this window for the character selecter'''
 def printText():
     fill(0,0,0)
     textSize(32)
     text("Warrior",100,330)
+    warriorimg = loadImage("Warrior.png")
+    image(warriorimg, 50, 50, 213, 250)
     text("Wizard",353,330)
+    wizardimg = loadImage("Wizard.png")
+    image(wizardimg, 303, 50, 213, 250)
     text("Rogue",606,330)
+    rogueimg = loadImage("Rogue.png")
+    image(rogueimg, 556, 50, 213, 250)
     text("Ranger",859,330)
+    rangerimg = loadImage("Ranger.png")
+    image(rangerimg, 809, 50, 213, 250)
     text("Paladin",100,650)
+    paladinimg = loadImage("Paladin.png")
+    image(paladinimg, 50, 370, 213, 250)
     text("Monk",358,650)
+    monkimg = loadImage("Monk.png")
+    image(monkimg, 303, 370, 213, 250)
     text("Warlock",606,650)
+    warlockimg = loadImage("Warlock.png")
+    image(warlockimg, 556, 370, 213, 250)
     text("Saint",864,650)
+    saintimg = loadImage("Saint.png")
+    image(saintimg, 809, 370, 213, 250)
     text("Confirm",1185,620)
     
 '''Sets the base stats for the current character in the stat changer'''
