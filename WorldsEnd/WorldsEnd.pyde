@@ -144,6 +144,30 @@ def drawCharacter(x):
     text("Strength: " + str(currChar[2]), 400, 350)
     text("Dexterity: " + str(currChar[3]), 400, 400)
     text("Stat points left to assign: " + str(points), 400, 450)
+    if currChar[0] == "Warrior":
+        warriorimg = loadImage("Warrior.png")
+        image(warriorimg, 50, 150, 300, 400)
+    elif currChar[0] == "Wizard":
+        wizardimg = loadImage("Wizard.png")
+        image(wizardimg, 50, 150, 300, 400)
+    elif currChar[0] == "Rogue":
+        rogueimg = loadImage("Rogue.png")
+        image(rogueimg, 50, 150, 300, 400)
+    elif currChar[0] == "Ranger":
+        rangerimg = loadImage("Ranger.png")
+        image(rangerimg, 50, 150, 300, 400)
+    elif currChar[0] == "Paladin":
+        paladinimg = loadImage("Paladin.png")
+        image(paladinimg, 50, 150, 300, 400)
+    elif currChar[0] == "Monk":
+        monkimg = loadImage("Monk.png")
+        image(monkimg, 50, 150, 300, 400)
+    elif currChar[0] == "Warlock":
+        warlockimg = loadImage("Warlock.png")
+        image(warlockimg, 50, 150, 300, 400)
+    else:
+        saintimg = loadImage("Saint.png")
+        image(saintimg, 50, 150, 300, 400)
     
 '''Draws all buttons for the stat distributor'''
 def drawButtons(x):
