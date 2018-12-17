@@ -17,35 +17,62 @@ bdex = 0
 bint = 0
 points = 2
 finalChars = []
+warriorimg = 0
+wizardimg = 0
+rogueimg = 0
+rangerimg = 0
+paladinimg = 0
+monkimg = 0
+warlockimg = 0
+saintimg = 0
+
+'''Loads the images of the characters'''
+def loadCharImg():
+    global warriorimg
+    global wizardimg
+    global rogueimg
+    global rangerimg
+    global paladinimg
+    global monkimg
+    global warlockimg
+    global saintimg
+    warriorimg = loadImage("Warrior.png")
+    wizardimg = loadImage("Wizard.png")
+    rogueimg = loadImage("Rogue.png")
+    rangerimg = loadImage("Ranger.png")
+    paladinimg = loadImage("Paladin.png")
+    monkimg = loadImage("Monk.png")
+    warlockimg = loadImage("Warlock.png")
+    saintimg = loadImage("Saint.png")
 
 
 '''Prints all text that appears in this window for the character selecter'''
 def printText():
+    global warriorimg
+    global wizardimg
+    global rogueimg
+    global rangerimg
+    global paladinimg
+    global monkimg
+    global warlockimg
+    global saintimg
     fill(0,0,0)
     textSize(32)
     text("Warrior",100,330)
-    warriorimg = loadImage("Warrior.png")
     image(warriorimg, 50, 50, 213, 250)
     text("Wizard",353,330)
-    wizardimg = loadImage("Wizard.png")
     image(wizardimg, 303, 50, 213, 250)
     text("Rogue",606,330)
-    rogueimg = loadImage("Rogue.png")
     image(rogueimg, 556, 50, 213, 250)
     text("Ranger",859,330)
-    rangerimg = loadImage("Ranger.png")
     image(rangerimg, 809, 50, 213, 250)
     text("Paladin",100,650)
-    paladinimg = loadImage("Paladin.png")
     image(paladinimg, 50, 370, 213, 250)
     text("Monk",358,650)
-    monkimg = loadImage("Monk.png")
     image(monkimg, 303, 370, 213, 250)
     text("Warlock",606,650)
-    warlockimg = loadImage("Warlock.png")
     image(warlockimg, 556, 370, 213, 250)
     text("Saint",864,650)
-    saintimg = loadImage("Saint.png")
     image(saintimg, 809, 370, 213, 250)
     text("Confirm",1185,620)
     
@@ -94,6 +121,7 @@ def setup2():
     rect(799,360,233,300)
     fill(150)
     rect(1150,560,200,100)
+    loadCharImg()
     printText()
     
 '''Sets up the stat distributor'''
@@ -133,6 +161,14 @@ def drawText():
 '''Draws all changing text in the program, using character x. Stat distributor'''
 def drawCharacter(x):
     global currChar
+    global warriorimg
+    global wizardimg
+    global rogueimg
+    global rangerimg
+    global paladinimg
+    global monkimg
+    global warlockimg
+    global saintimg
     background(139,0,0)
     fill(0)
     textSize(72)
@@ -145,28 +181,20 @@ def drawCharacter(x):
     text("Dexterity: " + str(currChar[3]), 400, 400)
     text("Stat points left to assign: " + str(points), 400, 450)
     if currChar[0] == "Warrior":
-        warriorimg = loadImage("Warrior.png")
         image(warriorimg, 50, 150, 300, 400)
     elif currChar[0] == "Wizard":
-        wizardimg = loadImage("Wizard.png")
         image(wizardimg, 50, 150, 300, 400)
     elif currChar[0] == "Rogue":
-        rogueimg = loadImage("Rogue.png")
         image(rogueimg, 50, 150, 300, 400)
     elif currChar[0] == "Ranger":
-        rangerimg = loadImage("Ranger.png")
         image(rangerimg, 50, 150, 300, 400)
     elif currChar[0] == "Paladin":
-        paladinimg = loadImage("Paladin.png")
         image(paladinimg, 50, 150, 300, 400)
     elif currChar[0] == "Monk":
-        monkimg = loadImage("Monk.png")
         image(monkimg, 50, 150, 300, 400)
     elif currChar[0] == "Warlock":
-        warlockimg = loadImage("Warlock.png")
         image(warlockimg, 50, 150, 300, 400)
     else:
-        saintimg = loadImage("Saint.png")
         image(saintimg, 50, 150, 300, 400)
     
 '''Draws all buttons for the stat distributor'''
