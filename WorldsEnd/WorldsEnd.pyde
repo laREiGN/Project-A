@@ -143,6 +143,101 @@ def setup50():
     letter = loadImage("letter.png")
     image(letter, 200,0,600,800)
 
+def charHover():
+    textSize(18)
+    if 40 < mouseX < 270 and 40 < mouseY < 340 and war == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Warrior", 1125, 90)
+        textSize(24)
+        text("HP:25\nAgility:2\nIntelligence:1\nStrength:5\nDexterity:2", 1125, 125)
+        textSize(12)
+        text("The Sound of Fear - When used, any damage\ndone to a different player gets directed\nto the warrior. A temporary hp bonus\nequal to half the Warrior's maximum health\nfor the entire battle and pulls aggro regardless\nof when they attacked for 1 turn\n(this bonus stacks with your current health).", 1125, 300)
+            
+    elif 293 < mouseX < 526 and 40 < mouseY < 340 and wiz == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Wizard", 1125, 90)
+        textSize(24)
+        text("HP:10\nAgility:3\nIntelligence:5\nStrength:2\nDexterity:3", 1125, 125)
+        textSize(12)
+        text("Arcane Expertise - The Wizard is capable of\nlearning any spell, with its cooldown\nbeing equal to its rarity (magic missile\nno cooldown, uncommon 2 battles, rare 3\nbattles, legendary 4 battles, The Wizard cannot\nlearn resurrection magic.)", 1125, 300)
+        
+    elif 546 < mouseX < 779 and 40 < mouseY < 340 and rog == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Rogue", 1125, 90)
+        textSize(24)
+        text("HP:15\nAgility:5\nIntelligence:2\nStrength:2\nDexterity:3", 1125, 125)
+        textSize(12)
+        text("Assassinate - When the Rogue is faster than\nits opponent they deal a preemptive strike\non the turn they join the combat instead\nof doing their normal attack. The damage\nis equal to the rogue's weapon damage,\nplus AGI + DEX.", 1125, 300)
+    
+    elif 799 < mouseX < 1032 and 40 < mouseY < 340 and ran == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Ranger", 1125, 90)
+        textSize(24)
+        text("HP:15\nAgility:4\nIntelligence:2\nStrength:1\nDexterity:5", 1125, 125)
+        textSize(12)
+        text("Snipe - If the Ranger is two spaces away from\nan encounter the Ranger hasn't started,\nthey can join combat from two spaces away.\nIf the player that generated the encounter\ndies, the encounter shifts from the dead\nplayer to the ranger, and the encounter\nwill start attacking after a 1 turn delay, (this\nclass ability can only be used if the Ranger\nposseses a DEX-Based Ranged weapon).", 1125, 300)
+        
+    elif 40 < mouseX < 270 and 360 < mouseY < 660 and pal == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Paladin", 1125, 90)
+        textSize(24)
+        text("HP:20\nAgility:2\nIntelligence:4\nStrength:4\nDexterity:1", 1125, 125)
+        textSize(12)
+        text("Empower Weapon - At any point in combat the\nPaladin can imbue their weapon with the\nsacred magic they know from the start of the\ngame to give their next attack a special effect,\nspecified on the spell card. Also makes\ndamage weapon power + intelligence for\none attack. (Has a cooldown of 2 turns).", 1125, 300)
+        
+    elif 293 < mouseX < 526 and 360 < mouseY < 660 and mon == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Monk", 1125, 90)
+        textSize(24)
+        text("HP:15\nAgility:4\nIntelligence:2\nStrength:2\nDexterity:4", 1125, 125)
+        textSize(12)
+        text("Taoism - At any point in combat the Monk can\nmake two attacks in one turn, the standard\ndealing 100% damage and the second strike\nat half damage value of the first strike. This\nability isn't usable when the Monk is using\na two handed weapon. (Has a cooldown of\n3 turns).", 1125, 300)
+        
+    elif 546 < mouseX < 779 and 360 < mouseY < 660 and warl == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Warlock", 1125, 90)
+        textSize(24)
+        text("HP:15\nAgility:3\nIntelligence:5\nStrength:2\nDexterity:2", 1125, 125)
+        textSize(10)
+        text("Intertwine Fate - The Warlock can bind a creature\nof Uncommon or lower ranking to the Warlock.\nThe creature will be decided by drawing monsters\nfrom the monster pile until a common or uncommon\nmonster card is drawn. The creature and Warlock\nare bound by life, when the creature dies\nthe Warlock receives damage depending on\nthe ranking of the monster (Common = 5 damage,\nUncommon = 10 damage). The creature acts directly\nafter the Warlock's turn. The warlock can summon\nanother creature if their current creature\nhas died, but with every summoned creature's\ndeath, the damage penalty for a creature\ndying will increase by 2.", 1125, 300)
+        
+    elif 799 < mouseX < 1032 and 360 < mouseY < 660 and sai == False:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+        textSize(42)
+        text("Saint", 1125, 90)
+        textSize(24)
+        text("HP:15\nAgility:3\nIntelligence:5\nStrength:1\nDexterity:3", 1125, 125)
+        textSize(12)
+        text("Divine Blessing - When the Saint uses a\nhealing type spell they can make the effects\nparty wide for as long as the group is fighting\nwithin the same encounter, or on the\nsame space.", 1125, 300)
+    
+    else:
+        fill(255)
+        rect(1100, 40, 300, 500)
+        fill(0)
+    
 '''Draws all non-changing text in the program in the stat distributor'''
 def drawText():
     textSize(32)
@@ -430,6 +525,7 @@ def draw():
         return 0
     if state == 1:
         global players
+        charHover()
     elif state == 2:
         global charInList
         drawCharacter(charInList)
