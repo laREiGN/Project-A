@@ -64,7 +64,7 @@ def playerButtons():
     text('Player 7', 612, 25)
     text('Player 8', 712, 25)
     
-def playerIndication():
+def playerIndication(): #Tells you what players inventory you are seeing
     textSize(30)
     fill(0)
     text('Player ', 10, 80) #Current players inventory
@@ -118,7 +118,7 @@ def inventoryButtons(): #Draws the buttons that let you add and remove items fro
     line(24, 502, 36, 502)
     line(30, 496, 30, 508)
     
-def mousePressed():
+def mousePressed(): #Makes the invnetory slot selection buttons and the inventory category buttons fucntional
     global choicePopupActive
     global inventorySlot
     if 0 < mouseX < 40 and 132 < mouseY < 152:
@@ -152,7 +152,7 @@ def mousePressed():
     elif 670 < mouseX < 780 and 60 < mouseY < 100:
         currentChoices = Armor
             
-def choicePopup():
+def choicePopup(): #Draws a popup that lets you pick any of the given items to add to your inventory
     global Items
     global Armor
     global Weapons
@@ -302,7 +302,7 @@ def cardTypeChoice():
         if 650 < mouseX < 750 and 60 < mouseY < 100:
             currentChoices = Armor
             
-def cardChoice():
+def cardChoice(): #Makes the card choice popup functional, assigning an item to the right slot when a button has been clicked
     global currentChoices
     global choicePopupActive
     global currentplayer
@@ -1959,7 +1959,7 @@ def playerChoice(): #Makes the player screen buttons clickable
             background(139,0,0)
             choicePopupActive = False
         
-def fullReset():
+def fullReset(): #Resets everything back to the base state when BACKSPACE has been pressed
     global player_one
     global player_two
     global player_three
