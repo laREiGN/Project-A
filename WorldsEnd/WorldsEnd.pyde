@@ -94,16 +94,14 @@ def setup():
     background(139,0,0)
     size(1500, 800)
     fill(218,165,32)
-    rect(350,250,800,150)
-    rect(350,425,800,150)
-    rect(350,600,800,150)
+    rect(350,350,800,150)
+    rect(350,575,800,150)
     textSize(200)
     text("World's End", 175, 200)
     fill(0)
     textSize(72)
-    text("Start Game", 550, 350)
-    text("Text Adventure", 475, 525)
-    text("Exit Game", 575, 700)
+    text("Start Game", 550, 450)
+    text("Exit Game", 575, 675)
 
 
 '''Sets up the character selecter'''
@@ -355,15 +353,12 @@ def drawButtons(x):
 def mousePressed():
     global state
     if state == 0:  #title screen
-        if mousePressed and 350 < mouseX < 1150 and 250 < mouseY < 400:
+        if mousePressed and 350 < mouseX < 1150 and 350 < mouseY < 500:
             fill(230)
             background(139,0,0)
             state = 50
             setup50()
-        if mousePressed and 350 < mouseX < 1150 and 425 < mouseY < 575:
-            textSize(24)
-            text("Coming soon!", 100, 525)
-        if mousePressed and 350 < mouseX < 1150 and 600 < mouseY < 750:
+        if mousePressed and 350 < mouseX < 1150 and 575 < mouseY < 725:
             exit()
     if state == 1:  #character selection
         global players
