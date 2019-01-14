@@ -33,6 +33,7 @@ global_turns = 0
 players = 0
 curr_char = 0
 final_chars = [('Warrior', 25, 5, 3, 3, 1), ('Wizard', 10, 2, 3, 5, 5), ('Paladin', 20, 5, 1, 2, 5)]
+player_list = []
 
 warriorimg = 0
 wizardimg = 0
@@ -51,60 +52,83 @@ mouse_y = 0
 def player_handling(final_chars, curr_char, pl):
     pl['class'] = final_chars[curr_char][0]
     pl['max_hp'] = final_chars[curr_char][1]
-    pl['hp'] = pl1['max_hp']
+    pl['hp'] = pl['max_hp']
     pl['str'] = final_chars[curr_char][2]
     pl['dex'] = final_chars[curr_char][3]
     pl['agi'] = final_chars[curr_char][4]
     pl['int'] = final_chars[curr_char][5]
     pl['status'] = 'Fit'
-    pl['damage'] = pl1['str'] # needs base weapon damage + dex interaction
+    pl['damage'] = pl['str'] # needs base weapon damage + dex interaction
         
     if pl['class'] == 'Warrior':
-        pl1['class_ability'] = "The Sound of Fear: When used, any damage done to a different player gets directed to the warrior. \n A temporaily hp bonus equal to half the Warrior's maximum health for the entire battle and pulls aggro regardless of when they attacked for 1 turn, \n (this bonus stacks with your current health)."
+        pl['class_ability'] = "The Sound of Fear: When used, any damage done to a different player gets directed to the warrior. \n A temporaily hp bonus equal to half the Warrior's maximum health for the entire battle and pulls aggro regardless of when they attacked for 1 turn, \n (this bonus stacks with your current health)."
             
     elif pl['class'] == 'Rogue':
         pl['class_ability'] = "Assassinate: When the Rogue is faster than its opponent they deal a preemptive strike on the turn they join the combat instead of doing their normal attack. The damage is equal to the rogue's weapon damage, plus AGI + DEX."
        
     elif pl['class'] == 'Ranger':
-        pl['class_ability'] = "Snipe: If the Ranger is two spaces away from an encounter the Ranger hasn't started, they can join combat from two spaces away." \n 
-        "If the player that generated the encounter dies, the encounter shifts from the dead player to the ranger, and the encounter will start attacking after a 1 turn delay." \n 
-        '(this class ability can only be used if the Ranger posseses a DEX-Based Ranged weapon).'
+        pl['class_ability'] = "Snipe: If the Ranger is two spaces away from an encounter the Ranger hasn't started, they can join combat from two spaces away. \n If the player that generated the encounter dies, the encounter shifts from the dead player to the ranger, and the encounter will start attacking after a 1 turn delay, \n (this class ability can only be used if the Ranger posseses a DEX-Based Ranged weapon)."
         
     elif pl['class'] == 'Monk':
-        pl['class_ability'] = "Taoism: At any point in combat the Monk can make two attacks in one turn, the standard dealing 100% damage and the second strike at half damage value of the first strike." \n
-        "This ability isn't usable when the Monk is using a two handed weapon, (Has a cooldown of 3 turns)."
+        pl['class_ability'] = "Taoism: At any point in combat the Monk can make two attacks in one turn, the standard dealing 100% damage and the second strike at half damage value of the first strike. \n This ability isn't usable when the Monk is using a two handed weapon, (Has a cooldown of 3 turns)."
         
     elif pl['class'] == 'Warlock':
-        pl['class_ability'] = "Intertwine Fate: The Warlock can bind a creature of Uncommon or lower ranking to the Warlock." \n 
-        'The creature will be decided by drawing monsters from the monster pile until a common or uncommon monster card is drawn.' \n 
-        'The creature and Warlock are bound by life, when the creature dies the Warlock receives damage depending on the ranking of the monster (Common = 5 damage, Uncommon = 10 damage).' \n 
-        "The creature acts directly after the Warlock's turn. The warlock can summon another creature if their current creature has died, but with every summoned creature's death, the damage penalty for a creature dying will increase by 2."
+        pl['class_ability'] = "Intertwine Fate: The Warlock can bind a creature of Uncommon or lower ranking to the Warlock. \n The creature will be decided by drawing monsters from the monster pile until a common or uncommon monster card is drawn. \n The creature and Warlock are bound by life, when the creature dies the Warlock receives damage depending on the ranking of the monster (Common = 5 damage, Uncommon = 10 damage). \n The creature acts directly after the Warlock's turn. The warlock can summon another creature if their current creature has died, but with every summoned creature's death, the damage penalty for a creature dying will increase by 2."
             
     elif pl['class'] == 'Wizard':
-        pl['spells'].append('Magic Missile')
+        pl['spells'] = 'Magic Missile'
         pl['class_ability'] = "Arcane Expertise: The Wizard is capable of learning any spell, with its cooldown being equal to its rarity," \n
         '(magic missile no cooldown, uncommon 2 battles, rare 3 battles, legendary 4 battles, The Wizard cannot learn resurection magic.)'
         
     elif pl['class'] == 'Saint':
-        pl['spells'].append('Recover')
+        pl['spells'] = 'Recover'
         pl['class_ability'] = 'Divine Blessing: When the Saint uses a healing type spell they can make the effects party wide' \n 
         'for as long as the group is fighting within the same encounter, or on the same space.'
         
     elif pl['class'] == 'Paladin':
-        pl['spells'].extend('Shine', 'Blessed Touch', 'Grant Blessing')
+        pl['spells'] = 'Shine', 'Blessed Touch', 'Grant Blessing'
 
 for players in final_chars:
-    if len(final_chars) >= 1:
+    if len(final_chars) == 1:
         pl1 = dict(SETUP_STAT_BASE)
-        curr_char = 0
         player_handling(final_chars, curr_char, pl1)
-    if len(final_chars) >= 2:
+        curr_char = 0
+        player_list.append(pl1)
+    if len(final_chars) == 2:
         pl2 = dict(SETUP_STAT_BASE)
-    if len(final_chars) >= 1:
-        pl1 = dict(SETUP_STAT_BASE)
-    if len(final_chars) >= 1:
-        pl1 = dict(SETUP_STAT_BASE)
-        
+        curr_char = 1
+        player_handling(final_chars, curr_char, pl2)
+        player_list.append(pl2)
+    if len(final_chars) == 3:
+        pl3 = dict(SETUP_STAT_BASE)
+        curr_char = 2
+        player_handling(final_chars, curr_char, pl3)
+        player_list.append(pl3)
+    if len(final_chars) == 4:
+        pl4 = dict(SETUP_STAT_BASE)
+        curr_char = 3
+        player_handling(final_chars, curr_char, pl4)
+        player_list.append(pl4)
+    if len(final_chars) == 5:
+        pl5 = dict(SETUP_STAT_BASE)
+        curr_char = 4
+        player_handling(final_chars, curr_char, pl5)
+        player_list.append(pl5)
+    if len(final_chars) == 6:
+        pl6 = dict(SETUP_STAT_BASE)
+        curr_char = 5
+        player_handling(final_chars, curr_char, pl6)
+        player_list.append(pl6)
+    if len(final_chars) == 7:
+        pl7 = dict(SETUP_STAT_BASE)
+        curr_char = 6
+        player_handling(final_chars, curr_char, pl7)
+        player_list.append(pl7)
+    if len(final_chars) == 8:
+        pl8 = dict(SETUP_STAT_BASE)
+        curr_char = 7
+        player_handling(final_chars, curr_char, pl8)
+        player_list.append(pl8)
 
 ''' if len(final_chars) >= 2:
         pl2 = dict(SETUP_STAT_BASE)
@@ -428,7 +452,7 @@ for players in final_chars:
     
 # Stat Handling Functions #
 
-def incr_hp(pl, amount):
+def incr_hp(curr_char, player_list, amount):
     if amount < 1:
         raise "Negative Value: error, please insert a positive integer."
     elif amount == float:
@@ -438,8 +462,30 @@ def incr_hp(pl, amount):
         if pl['hp'] > pl['max_hp']:
             pl['hp'] = pl['max_hp']
     return
+
+def decr_hp(curr_char, player_list, amount):
+    if amount > 0:
+        raise "Positive Value: error, please insert a positive integer."
+    elif amount == float:
+        raise "ValueError: Please insert a negative integer."
+    else:    
+        player_list[curr_char]['hp'] -= amount
+        if player_list[curr_char]['hp'] <= 0:
+            player_list[curr_char]['hp'] = 0
+    return
+
+def decr_max_hp(curr_char, player_list, amount):
+    if amount > 0:
+        raise "Positive Value: error, please insert a positive integer."
+    elif amount == float:
+        raise "ValueError: Please insert a negative integer."
+    else:    
+        player_list[curr_char]['max_hp'] -= amount
+        if player_list[curr_char]['max_hp'] <= 0:
+            player_list[curr_char]['max_hp'] = 0
+    return 
     
-def incr_str(pl, amount):
+def incr_str(curr_char, player_list, amount):
     if amount < 1:
         raise "ValueError: Please insert a positive integer."
     elif amount == float:
@@ -452,8 +498,19 @@ def incr_str(pl, amount):
             if pl['str'] > 5:
                 pl['str'] = 5
     return
+
+def decr_str(curr_char, player_list, amount):
+    if amount > 0:
+        raise "Positive Value: error, please insert a positive integer."
+    elif amount == float:
+        raise "ValueError: Please insert a negative integer."
+    else:    
+        player_list[curr_char]['str'] -= amount
+        if player_list[curr_char]['str'] <= 0:
+            player_list[curr_char]['str'] = 0
+    return
     
-def incr_dex(pl, amount):
+def incr_dex(curr_char, pl, amount):
     if amount < 1:
         raise "ValueError: Please insert a positive integer."
     elif amount == float:
@@ -467,7 +524,18 @@ def incr_dex(pl, amount):
                 pl['dex'] = 5
     return
 
-def incr_agi(pl, amount):
+def decr_dex(curr_char, player_list, amount):
+    if amount > 0:
+        raise "Positive Value: error, please insert a positive integer."
+    elif amount == float:
+        raise "ValueError: Please insert a negative integer."
+    else:    
+        player_list[curr_char]['dex'] -= amount
+        if player_list[curr_char]['dex'] <= 0:
+            player_list[curr_char]['dex'] = 0
+    return 
+
+def incr_agi(curr_char, pl, amount):
     if amount < 1:
         raise "ValueError: Please insert a positive integer."
     elif amount == float:
@@ -480,6 +548,17 @@ def incr_agi(pl, amount):
             if pl['agi'] > 5:
                 pl['agi'] = 5
     return
+
+def decr_agi(curr_char, player_list, amount):
+    if amount > 0:
+        raise "Positive Value: error, please insert a positive integer."
+    elif amount == float:
+        raise "ValueError: Please insert a negative integer."
+    else:    
+        player_list[curr_char]['agi'] -= amount
+        if player_list[curr_char]['agi'] <= 0:
+            player_list[curr_char]['agi'] = 0
+    return 
 
 def incr_int(pl, anmount):
     if amount < 1:
@@ -495,15 +574,27 @@ def incr_int(pl, anmount):
                 pl['int'] = 5
     return
 
-def incr_max_hp(pl, amount):
+def decr_int(curr_char, player_list, amount):
+    if amount > 0:
+        raise "Positive Value: error, please insert a positive integer."
+    elif amount == float:
+        raise "ValueError: Please insert a negative integer."
+    else:    
+        player_list[curr_char]['int'] -= amount
+        if player_list[curr_char]['int'] <= 0:
+            player_list[curr_char]['int'] = 0
+    return 
+
+def incr_max_hp(curr_char, player_list, amount):
     if amount < 1:
         raise "ValueError: Please insert a positive integer."
     elif amount == float:
         raise "TypeError: Please insert a positive integer."
     else:  
-        pl['max_hp'] += amount
+        player_list[curr_char]['max_hp'] += amount
     return
-def incr_spells(pl, amount):
+
+def incr_spells(curr_char, player_list, amount):
     pass
 
 
@@ -576,8 +667,10 @@ def setup():
     
 def mousePressed(x):
     global curr_char
+    global player_list
     
-def load_images(curr_charr):
+    
+def load_images(curr_charr, pl):
     '''Function that deals with displaying and managing class card images within the program.'''
     global warriorimg
     global saintimg
@@ -587,9 +680,8 @@ def load_images(curr_charr):
     global warlockimg
     global paladinimg
     global rogueimg
-    if curr_char == paladin:
-        paladinimg = loadImage('paladin.png')
-        image(paladinimg, 0, 0, 320, 500)
+    '''paladinimg = loadImage('paladin.png')
+    image(paladinimg, 0, 0, 320, 500)'''
 # Image Positioning
 
 
@@ -611,6 +703,12 @@ def draw_unmutable_text():
     text('+', 553, 353)
     text('+', 553, 403)
     text('+', 553, 453)
+    text('0', 650, 203)
+    text('0', 650, 253)
+    text('0', 650, 303)
+    text('0', 650, 353)
+    text('0', 650, 403)
+    text('0', 650, 453)
     textSize(17)
     text('Class: ', 330, 80)
     text('HP: ', 330, 153)
@@ -648,14 +746,19 @@ def draw_mutable_text_players(pl):
             text(str(pl['spells'][2]), 130, 640)
             text(str(pl['spells'][3]), 130, 670)
             text(str(pl['spells'][4]), 130, 700)
-    
+            
+def mutable_stat_assignment(curr_char, pl):
+    pass
+
 def update():
     pass
     
 def inventory():
     pass
     
-def draw():
+def draw(player_list):
     draw_unmutable_text()
-    draw_mutable_text_players(final_chars[curr_char])
+    draw_mutable_text_players(player_list)
     load_images(curr_char)
+    
+draw(player_list)
